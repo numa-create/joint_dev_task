@@ -211,18 +211,6 @@ def q18
         end
       end
   
-  #case age
-  #when 32
-   # def introduce
-    #  "こんにちは，#{@name}と申します。宜しくお願いいたします。"
-    #end
-  #else
-   # def introduce
-    #  "はいさいまいど〜，#{@name}です！！！"
-    #end
-  #end
-    
-
   puts user1.introduce
   puts user2.introduce
 end
