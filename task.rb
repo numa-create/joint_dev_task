@@ -239,24 +239,32 @@ class UserQ20
     @name = name
     @age = age
   end
+  def name
+    @name
+  end
 end
 
 class Zoo
   # 以下に回答を記載
-  case @age
-  when 0..5
-    info_entry_fee = zoo[:infant]
-  when 6..12
-    info_entry_fee = zoo[:children]
-  when 13..64
-    info_entry_fee = zoo[:adult]
-  when 65..120
-    info_entry_fee = zoo[:senior]
+  def initialize(name:, entry_fee:)
+    @en_name = name
+    @entry_fee = entry_fee
   end
-  puts info_entry_fee
-  #"#{@name}さんの入場料金は円です。"
-end
 
+  def info_entry_fee(user)
+    case @age
+    when 0..5
+      fee = entry_fee["infant"]
+    when 6..12
+      fee = entry_fee["children"]
+    when 13..64
+      fee = entry_fee["adult"]
+    when 65..120
+      fee = entry_fee["senior"]
+    end
+    "#{@name}さんの入場料金は#{fee}円です。"
+  end
+end
 
 def q20
   # ここは変更しないで下さい（動物園・ユーザー情報は変更していただいてOKです）
@@ -268,8 +276,9 @@ def q20
     UserQ20.new(name: "あじー", age: 32),
     UserQ20.new(name: "ぎん", age: 108)
   ]
+  
 
   users.each do |user|
-    zoo.info_entry_fee(user)
+    puts zoo.info_entry_fee(user)
   end
 end
