@@ -234,7 +234,7 @@ end
 
 class UserQ20
   # 以下に回答を記載
-  attr_accessor :name, :age
+  attr_reader :name, :age
   def initialize(name:, age:)
     @name = name
     @age = age
@@ -247,19 +247,7 @@ class Zoo
     @en_name = name
     @entry_fee = entry_fee
   end
-end
 
-def q20
-  # ここは変更しないで下さい（動物園・ユーザー情報は変更していただいてOKです）
-  zoo = Zoo.new(name: "旭山動物園", entry_fee: { infant: 0, children: 400, adult: 800, senior: 500 })
-
-  users = [
-    UserQ20.new(name: "たま", age: 3),
-    UserQ20.new(name: "ゆたぼん", age: 10),
-    UserQ20.new(name: "あじー", age: 32),
-    UserQ20.new(name: "ぎん", age: 108)
-  ]
-  
   def info_entry_fee(user)
     case user.age
     when 0..5
@@ -274,9 +262,21 @@ def q20
     puts "#{user.name}さんの入場料金は #{fee} 円です。"
   end
 
+end
+
+def q20
+  # ここは変更しないで下さい（動物園・ユーザー情報は変更していただいてOKです）
+  zoo = Zoo.new(name: "旭山動物園", entry_fee: { infant: 0, children: 400, adult: 800, senior: 500 })
+
+  users = [
+    UserQ20.new(name: "たま", age: 3),
+    UserQ20.new(name: "ゆたぼん", age: 10),
+    UserQ20.new(name: "あじー", age: 32),
+    UserQ20.new(name: "ぎん", age: 108)
+  ]
+
   users.each do |user|
     zoo.info_entry_fee(user)
   end
 
-  
 end
